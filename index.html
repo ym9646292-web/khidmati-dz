@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>خدمتي DZ</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #f5f7fa;
+      color: #172033;
+    }
+
+    header {
+      background: #0b7a5c;
+      color: white;
+      padding: 22px 18px;
+      border-radius: 0 0 25px 25px;
+    }
+
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+    }
+
+    header p {
+      margin: 0;
+      opacity: .9;
+    }
+
+    .container {
+      padding: 20px;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .search {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      margin-top: -5px;
+      box-shadow: 0 4px 15px rgba(0,0,0,.08);
+    }
+
+    .search input,
+    .search select {
+      width: 100%;
+      padding: 14px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    .search button {
+      width: 100%;
+      padding: 14px;
+      border: 0;
+      border-radius: 10px;
+      background: #0b7a5c;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+    }
+
+    h2 {
+      margin-top: 28px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .category {
+      background: white;
+      padding: 20px 10px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
+      font-size: 16px;
+    }
+
+    .category span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 8px;
+    }
+
+    .provider {
+      background: white;
+      padding: 16px;
+      margin-top: 12px;
+      border-radius: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,.06);
+    }
+
+    .provider h3 {
+      margin: 0 0 6px;
+    }
+
+    .rating {
+      color: #e6a700;
+      margin-bottom: 8px;
+    }
+
+    .provider button {
+      background: #0b7a5c;
+      color: white;
+      border: 0;
+      padding: 10px 16px;
+      border-radius: 9px;
+      margin-top: 8px;
+    }
+
+    .bottom {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 5px;
+      box-shadow: 0 -3px 15px rgba(0,0,0,.1);
+    }
+
+    .bottom div {
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .bottom span {
+      display: block;
+      font-size: 22px;
+    }
+
+    .message {
+      display: none;
+      background: #e8fff5;
+      padding: 15px;
+      margin-top: 15px;
+      border-radius: 12px;
+      color: #086348;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>خدمتي DZ 🇩🇿</h1>
+  <p>ابحث عن أفضل المهنيين والخدمات القريبة منك</p>
+</header>
+
+<div class="container">
+
+  <div class="search">
+    <input id="searchInput" type="text"
+      placeholder="🔎 ماذا تحتاج؟ مثال: كهربائي">
+
+    <select id="wilaya">
+      <option>اختر الولاية</option>
+      <option>تيبازة</option>
+      <option>الجزائر</option>
+      <option>وهران</option>
+      <option>البليدة</option>
+      <option>بومرداس</option>
+      <option>قسنطينة</option>
+      <option>سطيف</option>
+      <option>عنابة</option>
+    </select>
+
+    <button onclick="searchService()">ابحث عن خدمة</button>
+
+    <div id="message" class="message"></div>
+  </div>
+
+  <h2>الخدمات الأكثر طلبًا</h2>
+
+  <div class="categories">
+
+    <div class="category">
+      <span>⚡</span>
+      كهربائي
+    </div>
+
+    <div class="category">
+      <span>🔧</span>
+      سباك
+    </div>
+
+    <div class="category">
+      <span>🚗</span>
+      ميكانيكي
+    </div>
+
+    <div class="category">
+      <span>📱</span>
+      تصليح الهواتف
+    </div>
+
+    <div class="category">
+      <span>🧹</span>
+      تنظيف
+    </div>
+
+    <div class="category">
+      <span>🚚</span>
+      نقل وشحن
+    </div>
+
+  </div>
+
+  <h2>مهنيون مميزون ⭐</h2>
+
+  <div class="provider">
+    <h3>محمد - كهربائي</h3>
+    <div class="rating">★★★★★ 4.9</div>
+    <p>تيبازة • خبرة 8 سنوات</p>
+    <strong>ابتداءً من 1000 DA</strong><br>
+    <button onclick="contactProvider('محمد')">طلب الخدمة</button>
+  </div>
+
+  <div class="provider">
+    <h3>أمين - تصليح الهواتف</h3>
+    <div class="rating">★★★★★ 4.8</div>
+    <p>الجزائر • خبرة 5 سنوات</p>
+    <strong>أسعار مناسبة</strong><br>
+    <button onclick="contactProvider('أمين')">طلب الخدمة</button>
+  </div>
+
+</div>
+
+<div class="bottom">
+  <div><span>🏠</span>الرئيسية</div>
+  <div><span>🔎</span>البحث</div>
+  <div><span>📋</span>طلباتي</div>
+  <div><span>👤</span>حسابي</div>
+</div>
+
+<script>
+  function searchService() {
+    const service = document.getElementById("searchInput").value;
+    const wilaya = document.getElementById("wilaya").value;
+    const message = document.getElementById("message");
+
+    if (!service || wilaya === "اختر الولاية") {
+      message.style.display = "block";
+      message.innerText = "من فضلك اختر الخدمة والولاية أولاً.";
+      return;
+    }
+
+    message.style.display = "block";
+    message.innerText =
+      "جاري البحث عن " + service + " في " + wilaya + "...";
+  }
+
+  function contactProvider(name) {
+    alert("سيتم قريبًا ربطك بـ " + name + ". هذه النسخة تجريبية.");
+  }
+</script>
+
+</body>
+  </html>
